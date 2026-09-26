@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>物理の本質ノート：力積・エネルギー・そして空間の勾配へ</title>
+  
+  <!-- 外部CSSの読み込み -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- MathJax for LaTeX typesetting -->
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>物理の本質ノート</h1>
+    <p class="subtitle">「等速で飛ぶ物体の力とは何か？」という素朴な疑問から、解析力学の頂点 $\frac{d\vec{p}}{dt} = -\nabla U$ へ至る思索の記録</p>
+  </header>
+
+  <!-- Section 1 -->
+  <section>
+    <h2>1. 最初の違和感：等速運動と衝突</h2>
+    <p>高校物理で最初に教わる運動方程式 $F = ma$。しかし、ここに日常の直感との重大な断絶が存在する。</p>
+    <ul>
+      <li>時速 150 km の硬式球が等速で飛んでいるとき、加速度は $a = 0$ なので <strong>力 $F = 0$</strong>。</li>
+      <li>しかし、そのボールが壁や顔面にぶつかると、<strong>凄まじい破壊力</strong>をもたらす。</li>
+    </ul>
+    <div class="callout">
+      <div class="callout-title">核心の問い</div>
+      「等速で飛んでいる間はゼロだったはずの力は、一体いつ、どこから湧き上がってきたのか？」
+    </div>
+  </section>
+
+  <!-- Section 2 -->
+  <section>
+    <h2>2. 力積（Impulse）こそが力の本質である</h2>
+    <p>アイザック・ニュートンが『プリンキピア』で実際に記した運動の第2法則は、$F=ma$ ではなく<strong>「運動量の時間的変化率」</strong>であった。</p>
+    
+    <div class="formula-card">
+      $$F = \frac{\Delta p}{\Delta t} = \frac{\Delta (mv)}{\Delta t}$$
+    </div>
+
+    <h3>飛んでいる最中と衝突瞬間の正体</h3>
+    <ul>
+      <li><strong>飛んでいる最中：</strong> 誰もボールの運動量を奪っていない（$\Delta p = 0$）。持っているのは過去に投げられた際に口座に入金された「運動量 $mv$」と「運動エネルギー $\frac{1}{2}mv^2$」という<strong>データ（残高）のみ</strong>。干渉がないため力は $F = 0$。</li>
+      <li><strong>ぶつかった瞬間：</strong> 壁に接触した途端、持っていた運動量 $mv$ を強制的にゼロ（$-\Delta p$）にされる。このとき、<strong>衝突時間 $\Delta t$ が極めて短い（0.001秒など）ため、割り算の必然として力 $F$ が跳ね上がる。</strong></li>
+    </ul>
+
+    <p>力とは物体の中に最初から内在するパワーではなく、<strong>「運動量を時間の中で無理やり変えようとしたときに発生するレート（引き出しレート）」</strong>である。</p>
+  </section>
+
+  <!-- Section 3 -->
+  <section>
+    <h2>3. 力積と運動エネルギーを強引に結びつける</h2>
+    <p>運動量 $p = mv$ と運動エネルギー $K = \frac{1}{2}mv^2$ には、以下の厳密な代数関係がある。</p>
+    <div class="formula-card">
+      $$K = \frac{p^2}{2m} \iff p = \sqrt{2mK}$$
+    </div>
+    <p>これを力の本質的な式に代入することで、力・エネルギー・衝突時間を一本化する統合式が完成する。</p>
+    
+    <div class="formula-card">
+      $$F = \frac{\Delta \sqrt{2mK}}{\Delta t} \qquad \left( \text{または距離で見る場合 } F = \frac{\Delta K}{\Delta x} \right)$$
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>構成要素</th>
+          <th>物理的な役割</th>
+          <th>現実世界での意味</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>分子：$\sqrt{2mK}$</strong></td>
+          <td>持ち込まれる破壊のポテンシャル</td>
+          <td>質量と運動エネルギーの総量（ルートがかかるため変化は緩やか）</td>
+        </tr>
+        <tr>
+          <td><strong>分母：$\Delta t$</strong></td>
+          <td>現実世界のブレーキ時間</td>
+          <td>分母にむき出しで座っているため、時間が短くなるほど力は爆発する</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Section 4 -->
+  <section>
+    <h2>4. 思考実験：重力落下への適用</h2>
+    <p>衝突（ブレーキ）のために導いた式は、そのまま地球の重力落下（アクセル）をも完全に記述する。</p>
+
+    <h3>時間バージョンでの検証</h3>
+    <p>自由落下において、時刻 $t$ での速度は $v = gt$ であり、$K = \frac{1}{2}m(gt)^2$。分子は：</p>
+    $$\sqrt{2mK} = \sqrt{2m \cdot \frac{1}{2}mg^2t^2} = mgt$$
+    <p>時間幅 $\Delta t$ の間の変化率を計算すると：</p>
+    $$F = \frac{mg\Delta t}{\Delta t} = mg$$
+    <p>分母と分子の経過時間 $\Delta t$ が約分され、地表の重力 $F = mg$ が自然と導出される。</p>
+
+    <div class="callout">
+      <div class="callout-title">普遍性の発見</div>
+      衝突は「運動量を一括全額引き落とされた（$\Delta t$ 極小）」現象であり、重力は「毎秒 $mg$ ずつ定期振込されている」現象である。同じ式が両者を支配している。
+    </div>
+  </section>
+
+  <!-- Section 5 -->
+  <section>
+    <h2>5. 微分形への昇華と符号の物理（なぜ $-dU/dx$ なのか）</h2>
+    <p>平均の変化率 $\Delta$ から瞬間を捉える微分 $d$ へ移行すると、力は時間と空間の対称な姿を見せる。</p>
+    <div class="formula-card">
+      $$F = \frac{dp}{dt} = \frac{dK}{dx} = -\frac{dU}{dx}$$
+    </div>
+
+    <h3>なぜ $K$ はプラスで、$U$ にはマイナスがつくのか？</h3>
+    <ul>
+      <li><strong>運動エネルギー $\frac{dK}{dx}$ が正の理由：</strong> 力の向き（前）に進むと、加速して運動エネルギーは<strong>増加（$dK > 0$）</strong>するから。</li>
+      <li><strong>位置エネルギー $-\frac{dU}{dx}$ に負がつく理由：</strong> 物体は常に「標高（ポテンシャル）が低い谷底（安定）」へ向かって転がり落ちる。進む向きに対して $U$ は<strong>減少（$dU < 0$）</strong>するため、力の向きと符号を一致させるために外側に負号をつける必要がある。</li>
+    </ul>
+
+    <div class="callout">
+      <div class="callout-title">安定への指向</div>
+      位置エネルギー $U$ の目指す安定は「谷底（中心）」。運動エネルギー $K$ の目指す究極の安定は「停止（$K=0$）」。力は、地形の勾配に従って物質を中心へ呼び戻そうとする復元作用である。
+    </div>
+  </section>
+
+  <!-- Section 6 -->
+  <section>
+    <h2>6. 3次元空間への拡張：解析力学の頂へ</h2>
+    <p>1次元（直線上）の思索は、空間3次元 $(x, y, z)$ へと自然に拡張される。</p>
+    <ul>
+      <li>時間微分側：運動量は各方向の成分を持つベクトル $\vec{p} = (p_x, p_y, p_z)$ となる。</li>
+      <li>空間微分側：ポテンシャル面 $U(x, y, z)$ の3方向の傾きを束ねた勾配ベクトル（グラディエント $\nabla$）となる。</li>
+    </ul>
+
+    <div class="formula-card">
+      $$\frac{d\vec{p}}{dt} = -\nabla U$$
+      $$\begin{pmatrix} \frac{dp_x}{dt} \\ \frac{dp_y}{dt} \\ \frac{dp_z}{dt} \end{pmatrix} = -\begin{pmatrix} \frac{\partial U}{\partial x} \\ \frac{\partial U}{\partial y} \\ \frac{\partial U}{\partial z} \end{pmatrix}$$
+    </div>
+
+    <p>「空間のポテンシャル地形の一番急な下り坂（$-\nabla U$）に向かって、時間の流れの中で運動量ベクトル $\vec{p}$ の向きと大きさが曲げられていく」。</p>
+    <p>等速で飛ぶボールの衝突時間への疑問から出発した思索は、世界の時間と空間を結ぶ基本法則へと見事に着地した。</p>
+  </section>
+
+  <footer>
+    <p>Physics Notes &bull; Generated from First Principles Exploration</p>
+  </footer>
+</div>
+
+</body>
+</html>
