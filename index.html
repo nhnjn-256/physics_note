@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>物理の本質ノートアーカイブ</title>
+  
+  <!-- 外部CSSの読み込み -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- MathJax for LaTeX typesetting -->
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    .nav-card {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+    }
+
+    .nav-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+      box-shadow: 0 8px 30px rgba(56, 189, 248, 0.2);
+    }
+
+    .card-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      margin-bottom: 0.8rem;
+    }
+
+    .card-title {
+      font-size: 1.35rem;
+      color: #fff;
+      margin-bottom: 0.6rem;
+      font-weight: 700;
+    }
+
+    .card-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .card-link-text {
+      color: var(--accent);
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>物理の本質ノートアーカイブ</h1>
+    <p class="subtitle">日常の素朴な疑問や直感から掘り下げた、物理法則の再構築と思索のインデックス</p>
+  </header>
+
+  <!-- Note 1 -->
+  <a href="impulse.html" class="nav-card">
+    <section>
+      <span class="card-tag">Note 01 / 力学の本質</span>
+      <div class="card-title">等速で飛ぶ物体は力ゼロなのか？</div>
+      <p class="card-desc">
+        時速150kmのボールは等速なら $F=ma$ 上は力ゼロのはず。ではなぜ壁に当たると強烈な破壊力が生まれるのか？
+        力積（衝突時間 $\Delta t$）という真の定義から運動エネルギーを結びつけ、解析力学の頂点 $\frac{d\vec{p}}{dt} = -\nabla U$ へ至る導出ログ。
+      </p>
+      <div class="card-link-text">ノートを読む &rarr;</div>
+    </section>
+  </a>
+
+  <!-- Note 2 -->
+  <a href="minus.html" class="nav-card">
+    <section>
+      <span class="card-tag">Note 02 / 符号の哲学</span>
+      <div class="card-title">バネや重力の位置エネルギーにある「マイナス」って何？</div>
+      <p class="card-desc">
+        「中心に向かうやつはマイナスで、発散するやつはプラスなのでは？」という直感を解剖。
+        すり鉢の坂道を下って中心（谷底）へ帰りたがるポテンシャル $U$ と、飛び出したいわけではないのに暴走させられる運動エネルギー $K$ のせめぎ合いを紐解く。
+      </p>
+      <div class="card-link-text">ノートを読む &rarr;</div>
+    </section>
+  </a>
+
+  <footer>
+    <p>Physics Notes Archive &bull; Hosted on GitHub Pages</p>
+  </footer>
+</div>
+
+</body>
+</html>
